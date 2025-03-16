@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 400px;
+            height: 600px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .flip-card-front {
+            background-color: #ffffff;
+            border: 5px solid #ff6f61;
+            color: #ff6f61;
+        }
+
+        .flip-card-back {
+            background-color: #ff6f61;
+            color: white;
+            transform: rotateY(180deg);
+            border: 5px solid #ffffff;
+        }
+
+        .flip-card-front h1 {
+            font-size: 2em;
+        }
+
+        .flip-card-back h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .flip-card-back p {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
+
+        .instruction {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            font-style: italic;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .name-container p {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>🎉 Undangan Arisan Keluarga! 🎉</h1>
+                <div class="name-container">
+                    <p>Kepada: <span style="font-weight: bold; color: #ff6f61;">
+                        <script>
+                            const urlParams = new URLSearchParams(window.location.search);
+                            let nama = urlParams.get('nama');
+                            if (nama) {
+                                nama = nama.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+                            } else {
+                                nama = 'Anggota Keluarga';
+                            }
+                            document.write(nama);
+                        </script>
+                    </span></p>
+                </div>
+                <p class="instruction">Klik kartu untuk melihat detail!</p>
+            </div>
+            <div class="flip-card-back">
+                <h2>Detail Acara</h2>
+                <p>Kami sangat senang Anda bisa bergabung!</p>
+                <p>Tanggal: [Masukkan Tanggal]</p>
+                <p>Waktu: [Masukkan Waktu]</p>
+                <p>Lokasi: [Masukkan Lokasi]</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
